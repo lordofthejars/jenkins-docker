@@ -1,0 +1,509 @@
+mixin slide(names, slideClasses)
+  if names
+    section(class=names+' '+slideClasses, data-bespoke-backdrop='backdrop ' + names.split(' ').map(function(name) { return 'backdrop--' + name; }).join(' '))
+      block
+  else
+    section
+      block
+
+doctype html
+html
+  head
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+  title Docker And Jenkins.
+
+  link(rel='stylesheet', type='text/css', href='build/build.css')
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+
+  body
+
+    article
+
+      +slide('title')
+        h1 Docker and Jenkins. 
+        h3 Orchestrating Continuous Delivery
+
+      +slide
+        img.avatar(src='images/profile.jpg')
+        h4 
+          i.fa.fa-twitter alexsotob - lordofthejars.com
+        img.cloudbees(src='images/cloudbees.png')
+        img.logos(src='images/logos.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('mac')
+        h1 Software is eating the world
+        aside(role='note') Every business is in the sw business
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide
+        img.schemash(src='images/cockpit.jpg')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide
+        img.schemash(src='images/tesla.jpg')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.schemash(src='images/tesla-update.jpg')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide
+        img.schemash(src='images/tesla-news.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.schemash(src='images/airport.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide
+        img.schemash(src='images/casino.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        ul.lists
+          li
+            i(class='fa fa-laptop fa-3x')
+            i(class='fa fa-long-arrow-right fa-3x')
+            i(class='fa fa-server fa-3x')
+          li Faster
+          li Sooner
+          li Better
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('ci')
+        h2 Key is Automation
+        aside(role='note') Learn from car factory, automatic and pipelined
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.schemash(src='images/pipeline.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        
+      +slide
+        img.schemash(src='images/jenkinseco.jpg')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.schemash(src='images/normaldeployment.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('heat')
+        h2 speed + friction = <span class='important'>HEAT</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('bob')
+        h2 GO - GO - GO
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('docker')
+        h2 Containers Codify<br/> OS Config
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') An OS level virtualization system for running multiple isolated Linux systems on a single Linux host.
+
+      +slide
+        img.schemash(src='images/dockerdeployment.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide('sheep')
+        h2 How I build a Docker image?
+        pre.small.language-javascript
+          code.
+            $ docker run -ti ubuntu:12.10 bash
+            
+            [a2b] apt-get update
+            [a2b] apt-get install curl
+            [a2b] exit
+            
+            $ docker commit -m "curl installed" a2b username/image
+            $ docker build .
+
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide('dockjenk')
+
+      +slide
+        h2.underline CloudBees: Docker and CD
+        
+        ul.listsleft
+          li
+            span(class='listhighlight') Docker Hub Notification:
+            span(class='description') &nbsp;triggers downstream jobs when a tagged container is pushed to Docker Hub
+          li
+            span(class='listhighlight') Docker Traceability:
+            span(class='description') &nbsp;identifies which build pushed a particular container, displays on Jenkins builds page
+          li
+            span(class='listhighlight') Docker Custom Build Environment:
+            span(class='description') &nbsp;specifies customized build environments as Docker containers 
+          li
+            span(class='listhighlight') Docker:
+            span(class='description') &nbsp;use a docker host to dynamically provision a slave, run a single build, then tear-down
+          li
+            span(class='listhighlight') Build and Publish :
+            span(class='description') &nbsp;builds projects that have a Dockerfile and pushes the resultant tagged image to Docker Hub
+          
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide
+        h2 Build, Test, & Deploy Docker Images from Jenkins
+        img.schemash(src='images/plugins.png' style='height:70%')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide
+        h2 Docker Hub Notification Plugin
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.schemash(src='images/webhookhub.png' style='height:70%')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.schemash(src='images/hubconf.png' style='height:70%')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') DOCKER_TRIGGER_REPO_NAME
+
+      +slide
+        h2 Docker Traceability Plugin
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide
+        img.schemash(src='images/fingerprints.png' style='height:60%')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+        aside(role='note') Uses Jenkins artifact fingerprint as well
+      
+      +slide
+        img.schemash(src='images/listcontainers.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.schemash(src='images/dockerevents.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide
+        h2 Docker Custom Build Environment Plugin
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide
+        img.schemash(src='images/template.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2 Docker Plugin
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide
+        img.schemash(src='images/dockercustom.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.schemash(src='images/build-docker-tag.png' style='height:30%')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2 Build and Publish Plugin
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide
+        img.schemash(src='images/archiveartifacts.png' style='height:70%')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide
+        img.schemash(src='images/copyartifacts.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      +slide
+        img.schemash(src='images/build-config.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('alexoh')
+        h2 No More <span class="important">Build</span> Jobs/Up/Down<span class="important">streams</span> PLEASE!!!! 
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('orch')
+        h1 CloudBees Pipeline Plugin
+        h3 Continuous Delivery as Code
+        aside(role='note') Groovy DSL 
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2.underline Features of Pipeline Plugin
+        
+        ul.lists
+          li Configuration in Source Repositories
+          li Less click-and-type, more code
+          li From simple to complex
+          li Survives Jenkins restarts & connection losses ($)
+          li Reusable Definitions
+          li Build history/trend segregated per branches
+          li UI ($ -> OSS)
+          
+      +slide
+        img.schemash(src='images/pipelineplug.png')
+      
+      +slide
+        h2 Jenkinsfile (1/3)
+        pre.small.language-javascript
+          code.
+            stage 'compileAndUnit'
+            node {
+                    git branch: 'master', url: 'https://github.com/lordofthejars/starwars.git'
+                    gradle 'clean test'
+                    stash excludes: 'build/', includes: '**', name: 'source'
+                    stash includes: 'build/jacoco/*.exec', name: 'unitCodeCoverage'
+                    step([$class: 'JUnitResultArchiver', testResults: '**/build/test-results/*.xml'])
+            }
+            
+            stage 'codeQuality'
+            parallel 'pmd' : {
+                node {
+                    unstash 'source'
+                    gradle 'pmdMain'
+                    step([$class: 'PmdPublisher', pattern: 'build/reports/pmd/*.xml'])
+                }
+            }, 'jacoco': {
+                node {
+                    unstash 'source'
+                    unstash 'unitCodeCoverage'
+                    gradle 'jacocoTestReport'
+                }
+            }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide  
+        h2 Jenkinsfile (2/3)
+        pre.small.language-javascript
+          code.
+            stage 'assemble-binaries'
+
+            node('linux') {
+                unstash 'source'
+                withEnv(["SOURCE_BUILD_NUMBER=${env.BUILD_NUMBER}"]) {
+                    gradle 'assemble'
+                }
+            }
+            
+            input message: "Deploy Application to QA ?"
+
+            stage name: 'Deploy to QA', concurrency: 1
+            node {
+                echo "Application Deployed to QA."
+            }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide  
+        h2 Jenkinsfile (3/3)
+        pre.small.language-javascript
+          code.
+            gradle = load 'jenkins/gradle.groovy'
+            
+            withCredentials([[$class: 'UsernamePasswordMultiBinding', 
+                              credentialsId: 'MyID', usernameVariable: 'GIT_USERNAME', 
+                              passwordVariable: 'GIT_PASSWORD']]) {
+              sh "git tag -a some_tag -m 'Jenkins'"
+              sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@<REPO> --tags"
+            }
+            
+            def mvnHome tool 'Maven 3.3.3'
+            sh "${mvnHome}/bin/mvn -B verify"
+        img.schemash(src='images/credentials.png', style='height:20%')    
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('whale')
+        h2 Docker Pipeline Integration
+      
+      +slide
+        h2 Jenkinsfile (1/2)
+        pre.small.language-javascript
+          code.
+              docker.withRegistry('https://lordofthejars-docker-continuous_delivery.bintray.io', 'd4fc3fa9-39f7-47ea-a57c-795642f90989') {
+                  git 'git@github.com:lordofthejars/busybox.git' 
+                  def newApp = docker.build "lordofthejars-docker-continuous_delivery.bintray.io/lordofthejars/javatest:${env.BUILD_TAG}"
+                  newApp.push()
+              }
+              
+              docker.image('lordofthejars/javatest').withRun {c ->
+                sh './executeTests.sh'
+              }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2 Jenkinsfile (2/2)
+        pre.small.language-javascript
+          code.
+              docker.image('maven:3.3.3-jdk-8').inside('-v ~/.m2/repository:/m2repo -u 1000:50') {
+                git '…your-sources…'
+                sh 'mvn -Dmaven.repo.local=/m2repo clean install'
+              }
+              
+              
+              docker.withServer('tcp://swarm.mycorp.com:2376', 'swarm-certs') {
+                docker.image('httpd').withRun('-p 8080:80') {c ->
+                  sh "curl -i http://${hostIp(c)}:8080/"
+                }
+              }
+              def hostIp(container) {
+                sh "docker inspect -f {{.Node.Ip}} ${container.id} > hostIp"
+                readFile('hostIp').trim()
+              }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.schemash(src='images/ui.png')
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('adathink')
+        h1 Let's wind <br/> down
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2.underline Conclusions
+        
+        ul.lists
+          li Automation is the Key
+          li Docker Simplifies Environment Problems
+          li Jenkins is Ready For Docker and CD
+          li Pipleline as Code gives you Freedom
+        
+        aside(role='note') Docker in Prod or helper
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('puzzle')
+        h2 Only One Piece of the Jigsaw
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide('penalty')
+        h2 Follow the Rules, Adapt to your Needs
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+          
+      +slide
+        h2 CloudBees
+        i.fa.fa-heart.important.fa-2x
+        h2 Jenkins
+      
+      +slide('deming')
+        h3 It is not necessary to change. <br/> Survival is not mandatory.
+        h4 W. Edwards Deming
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+
+      
+      +slide('adarise')
+        h1 Questions
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        img.avatar(src='images/profile.jpg')
+        br
+        a(href='http://lordofthejars.github.io/mock-stub-fake/', style='border:none')
+          i.fa.fa-github
+          h3 http://lordofthejars.github.io/mock-stub-fake/
+          i.fa.fa-envelope
+          h3 asotobu@gmail.com
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+     
+          
+      
+    script(src='build/build.js')
