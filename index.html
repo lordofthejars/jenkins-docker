@@ -286,6 +286,37 @@ def hostIp(container) {
       <section><img src="images/ui.png" class="schemash">
         <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
       </section>
+      <section data-bespoke-backdrop="backdrop backdrop--multiple" class="multiple undefined">
+        <h2>Different Ways of Doing Same Things with <span class='important'>DSL</span></h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section data-bespoke-backdrop="backdrop backdrop--calm" class="calm undefined">
+        <h2>Simple Build for Pipeline Plugin</h2>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
+      <section>
+        <h2>Jenkinsfile</h2>
+        <pre class="small language-javascript"><code>simpleBuild {
+  machine = "hi-speed"
+  docker = "java:1.9"
+  
+  env = [
+    FOO : 42,
+    BAR : "YASS"
+  ]
+  
+  git_repo = "https://github.com/cloudbeers/PR-demo"
+  
+  before_script = "echo before"
+  script = 'echo after $FOO'
+  after_script = 'echo done now'
+  
+  notifications = [
+    email : "foo@bar.com"
+  ]
+}</code></pre>
+        <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
+      </section>
       <section data-bespoke-backdrop="backdrop backdrop--adathink" class="adathink undefined">
         <h1>Let's wind <br/> down</h1>
         <div class="footer"><i class="fa fa-twitter">&nbsp;alexsotob&nbsp;</i><i class="fa fa-github">&nbsp;lordofthejars</i></div>
@@ -334,7 +365,8 @@ def hostIp(container) {
           <h5 style="font-size: .55em">https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Traceability</h5></a><a href="https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Build+and+Publish+plugin" style="border:none"> 
           <h5 style="font-size: .55em">https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Build+and+Publish+plugin</h5></a><a href="https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Hub+Notification" style="border:none"> 
           <h5 style="font-size: .55em">https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Hub+Notification</h5></a><a href="https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin" style="border:none"> 
-          <h5 style="font-size: .55em">https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin</h5></a>
+          <h5 style="font-size: .55em">https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin</h5></a><a href="https://github.com/jenkinsci/simple-build-for-pipeline-plugin"> 
+          <h5 style="font-size: .55em">https://github.com/jenkinsci/simple-build-for-pipeline-plugin</h5></a>
       </section>
     </article>
     <script src="build/build.js"></script>
