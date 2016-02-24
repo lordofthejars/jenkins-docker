@@ -440,6 +440,45 @@ html
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
           i.fa.fa-github &nbsp;lordofthejars
       
+      +slide('multiple')
+        h2 Different Ways of Doing Same Things with <span class='important'>DSL</span>
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide('calm')
+        h2 Simple Build for Pipeline Plugin
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        h2 Jenkinsfile
+        pre.small.language-javascript
+          code.
+              simpleBuild {
+                machine = "hi-speed"
+                docker = "java:1.9"
+                
+                env = [
+                  FOO : 42,
+                  BAR : "YASS"
+                ]
+                
+                git_repo = "https://github.com/cloudbeers/PR-demo"
+    
+                before_script = "echo before"
+                script = 'echo after $FOO'
+                after_script = 'echo done now'
+      
+                notifications = [
+                  email : "foo@bar.com"
+                ]
+              }
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
       +slide('adathink')
         h1 Let's wind <br/> down
         div.footer
@@ -518,6 +557,8 @@ html
           h5(style='font-size: .55em') https://wiki.jenkins-ci.org/display/JENKINS/CloudBees+Docker+Hub+Notification
         a(href='https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin', style='border:none')  
           h5(style='font-size: .55em') https://wiki.jenkins-ci.org/display/JENKINS/Docker+Plugin
+        a(href='https://github.com/jenkinsci/simple-build-for-pipeline-plugin')  
+          h5(style='font-size: .55em') https://github.com/jenkinsci/simple-build-for-pipeline-plugin
           
       
     script(src='build/build.js')
