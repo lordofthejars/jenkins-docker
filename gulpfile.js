@@ -2,6 +2,7 @@ var pkg = require('./package.json'),
   gulp = require('gulp'),
   gutil = require('gulp-util'),
   plumber = require('gulp-plumber'),
+  del = require('del'),
   rimraf = require('gulp-rimraf'),
   rename = require('gulp-rename'),
   connect = require('gulp-connect'),
@@ -53,6 +54,12 @@ gulp.task('css', ['clean:css'], function() {
     .pipe(connect.reload());
 });
 
+gulp.task('fonts', ['clean:fonts'], function() {
+  return gulp.src('src/fonts/*')
+    .pipe(gulp.dest('dist/fonts'))
+    .pipe(connect.reload());
+});
+
 gulp.task('images', ['clean:images'], function() {
   return gulp.src('src/images/**/*')
     .pipe(gulp.dest('dist/images'))
@@ -79,6 +86,10 @@ gulp.task('clean:css', function() {
     .pipe(rimraf());
 });
 
+gulp.task('clean:fonts', function() {
+  return del('dist/fonts');
+});
+
 gulp.task('clean:images', function() {
   return gulp.src('dist/images')
     .pipe(rimraf());
@@ -97,6 +108,7 @@ gulp.task('watch', function() {
   gulp.watch('src/**/*.jade', ['html']);
   gulp.watch('src/styles/**/*.styl', ['css']);
   gulp.watch('src/images/**/*', ['images']);
+  gulp.watch('src/fonts/*', ['fonts']);
   gulp.watch([
     'src/scripts/**/*.js',
     'bespoke-theme-*/dist/*.js' // Allow themes to be developed in parallel
@@ -117,6 +129,6 @@ gulp.task('clean:pdf', function() {
     .pipe(rimraf());
 });
 
-gulp.task('build', ['js', 'html', 'css', 'images']);
+gulp.task('build', ['js', 'html', 'css', 'fonts', 'images']);
 gulp.task('serve', ['connect', 'watch']);
 gulp.task('default', ['build']);
