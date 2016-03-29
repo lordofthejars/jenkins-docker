@@ -21,9 +21,58 @@ html
     article
 
       +slide
-        p.bullet.bespoke-bullet.bespoke-bullet-active.bespoke-bullet-current A
-        p.bullet.bespoke-bullet.bespoke-bullet-inactive B
+        div.main-wrap
+          div.leftbar
+            h2.gothicfont(style='font-size:2em') Alex Soto
+            br
+            h2.gothicfont.important(style='font-size:1em') CloudBees Engineer
+            h2.gothicfont(style='font-size:1em') Open Source Advocate
+            h2.gothicfont.important(style='font-size:1em') @alexsotob
+            img(src='../images/public.png', style="width:40%")
+          div.rightbar
+            img(src='images/alex.jpg', style="width:100%")
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
+      
+      +slide
+        div.dividebyfour.NW
+          img.bullet.bespoke-bullet.bespoke-bullet-active.bespoke-bullet-current(src='images/deliverybox.jpg', style="width:100%")
+        div.dividebyfour.NE
+          img.bullet.bespoke-bullet.bespoke-bullet-inactive(src='images/manual.jpg', style="width:100%")
+        div.dividebyfour.SW
+          img.bullet.bespoke-bullet.bespoke-bullet-inactive(src='images/automate.jpg', style="width:100%")
+        div.dividebyfour.SE
+          img.bullet.bespoke-bullet.bespoke-bullet-inactive(src='images/test.jpg', style="width:100%")
+      
+      +slide
+        h2 Jenkinsfile (2/2)
+        pre.small.language-javascript
+          code.bullet.bespoke-bullet.bespoke-bullet-active.bespoke-bullet-current.
+              docker.image('maven:3.3.3-jdk-8').inside('-v ~/.m2/repository:/m2repo -u 1000:50') {
+                git '…your-sources…'
+                sh 'mvn -Dmaven.repo.local=/m2repo clean install'
+              }
+          
+          code.bullet.bespoke-bullet.bespoke-bullet-inactive.      
+              docker.withServer('tcp://swarm.mycorp.com:2376', 'swarm-certs') {
+                docker.image('httpd').withRun('-p 8080:80') {c ->
+                  sh "curl -i http://${hostIp(c)}:8080/"
+                }
+              }
+              def hostIp(container) {
+                sh "docker inspect -f {{.Node.Ip}} ${container.id} > hostIp"
+                readFile('hostIp').trim()
+              }
+        div.square.bullet.bespoke-bullet.bespoke-bullet-inactive Running
+        
+        div.footer
+          i.fa.fa-twitter &nbsp;alexsotob&nbsp;
+          i.fa.fa-github &nbsp;lordofthejars
 
+      +slide
+        iframe(src='https://localhost:57575/')
+      
       +slide('title')
         h1 Docker and Jenkins. 
         h3 Orchestrating Continuous Delivery
@@ -39,7 +88,7 @@ html
           i.fa.fa-github &nbsp;lordofthejars
       
       +slide('mac')
-        h1 Software is eating the world
+        h1.small Software is eating the world
         aside(role='note') Every business is in the sw business
         div.footer
           i.fa.fa-twitter &nbsp;alexsotob&nbsp;
